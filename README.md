@@ -1,2 +1,2 @@
 # databaseScripts
-Database, tables and data for practice
+SQL Scripsts for Database, tables and data for practice
