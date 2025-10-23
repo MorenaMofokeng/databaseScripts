@@ -1,0 +1,19 @@
+sqlplusw scott/tiger@oracle  @E:\scripts\budget.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\clearwater.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\kaleidoscope.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\northwoods.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\software.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\cretabssql.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\cretabsforms.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\student.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\starvideo.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\doctor.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\insure.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\cre_seq.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\aircraft.sql
+sqlplusw scott/tiger@oracle  @E:\scripts\Workertable.txt
+sqlplusw scott/tiger@oracle  @E:\scripts\NamanNavan(N2)Corp.txt
+sqlplusw scott/tiger@oracle  @E:\scripts\customerinvoice.txt
+sqlplusw scott/tiger@oracle  @E:\scripts\Indo-USCollege.txt
+sqlplusw scott/tiger@oracle  @E:\scripts\Oracle9i.sql
+

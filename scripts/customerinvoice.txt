@@ -1,0 +1,58 @@
+drop table customer cascade constraints;
+drop table item cascade constraints;
+drop table invoice cascade constraints;
+drop table invitem cascade constraints;
+
+
+
+CREATE TABLE customer (CustNo NUMBER (3),
+	CustName VARCHAR2 (10) CONSTRAINT customer_custname_nn NOT NULL,
+	State CHAR (2) DEFAULT 'NJ',
+	Phone CHAR (12),
+	CONSTRAINT customer_custno_pk PRIMARY KEY (CustNo));
+CREATE TABLE item (ItemNo NUMBER (2),
+	ItemName VARCHAR2 (6),
+	ItemPrice NUMBER (3,2),
+	QtyOnHand NUMBER (3),
+	CONSTRAINT item_itemno_pk PRIMARY KEY (ItemNo),
+	CONSTRAINT item_qtyonhand_ck CHECK (QtyOnHand >= 0));
+CREATE TABLE invoice (InvNo NUMBER (4),
+	InvDate DATE,
+	CustNo NUMBER (3) CONSTRAINT invoice_custno_nn NOT NULL,
+	CONSTRAINT invoice_invoiceno_pk PRIMARY KEY (InvNo),
+	CONSTRAINT invoice_custno_fk FOREIGN KEY (CustNo)
+		REFERENCES customer (CustNo));
+CREATE TABLE invitem (InvNo NUMBER (4),
+	ItemNo NUMBER (2),
+	Qty NUMBER (2) NOT NULL,
+	CONSTRAINT invitem_invno_itemno_pk PRIMARY KEY (InvNo, ItemNo),
+	CONSTRAINT invitem_invno_fk FOREIGN KEY (InvNo)
+		REFERENCES invoice (InvNo),
+	CONSTRAINT invitem_itemno_fk FOREIGN KEY (ItemNo)
+		REFERENCES item (ItemNo));
+
+INSERT INTO customer VALUES (211, 'Garcia', 'NJ', '732-555-1000');
+INSERT INTO customer VALUES (212, 'Parikh', 'NY', '212-555-2000');
+INSERT INTO customer VALUES (225, 'Eisenhauer', 'NJ', '973-555-3333');
+INSERT INTO customer VALUES (239, 'Bayer', 'FL', '407-555-7777');
+INSERT INTO item VALUES (1, 'Screw', 2.25, 50);
+INSERT INTO item VALUES (2, 'Nut', 5.00, 110);
+INSERT INTO item VALUES (3, 'Bolt', 3.99, 75);
+INSERT INTO item VALUES (4, 'Hammer', 9.99, 125);
+INSERT INTO item VALUES (5, 'Washer', 1.99, 100);
+INSERT INTO item VALUES (6, 'Nail', 0.99, 300);
+INSERT INTO invoice VALUES (1001, TO_DATE ('05-09-2003', 'dd-mm-yyyy'), 212);
+INSERT INTO invoice VALUES (1002, TO_DATE ('17-09-2003', 'dd-mm-yyyy'), 225);
+INSERT INTO invoice VALUES (1003, TO_DATE ('17-09-2003', 'dd-mm-yyyy'), 239);
+INSERT INTO invoice VALUES (1004, TO_DATE ('18-09-2003', 'dd-mm-yyyy'), 211);
+INSERT INTO invoice VALUES (1005, TO_DATE ('21-09-2003', 'dd-mm-yyyy'), 212);
+INSERT INTO invitem VALUES (1001, 1, 5);
+INSERT INTO invitem VALUES (1001, 3, 5);
+INSERT INTO invitem VALUES (1001, 5, 9);
+INSERT INTO invitem VALUES (1002, 1, 2);
+INSERT INTO invitem VALUES (1002, 2, 3);
+INSERT INTO invitem VALUES (1003, 1, 7);
+INSERT INTO invitem VALUES (1003, 2, 1);
+INSERT INTO invitem VALUES (1004, 4, 5);
+INSERT INTO invitem VALUES (1005, 4, 10);
+commit;

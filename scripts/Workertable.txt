@@ -1,0 +1,18 @@
+drop table worker cascade constraints;
+CREATE TABLE worker (WorkerId CHAR(5),
+	Last VARCHAR2(15),
+	FIRST VARCHAR2(15),
+CONSTRAINT worker_workerid_pk PRIMARY KEY (WorkerId));
+INSERT INTO worker
+VALUES ('00110', 'Borges', 'Luz');
+INSERT INTO worker
+VALUES ('00111', 'Bayer', 'Julia');
+INSERT INTO worker
+VALUES ('00103', 'Rickles', 'Deborah');
+INSERT INTO worker
+VALUES ('00113', 'Marte', 'Noemi');
+INSERT INTO worker
+VALUES ('00105', 'Khan', 'Amir');
+INSERT INTO worker
+VALUES ('00107', 'Feliciano', 'Sandi');
+commit;
